@@ -1,0 +1,9 @@
+/* Footer */
+footer{
+    padding-top: 8rem;
+  }
+  
+  .footer__paragraph {
+    text-align: center;
+    font-size: 0.8rem;
+  }
