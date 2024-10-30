@@ -1,15 +1,16 @@
 body {
-  background-color: #e7e7e7;
   width: 100%;
   min-height: 100vh;
   padding: var(--spacing-medium);
   font-family: sans-serif;
 }
+
 header {
   width: 100%;
   display: flex;
   justify-content: center;
 }
+
 .main__heading--container {
   background-color: blueviolet;
   color: white;
@@ -20,12 +21,16 @@ header {
   align-items: center;
   justify-content: space-evenly;
   padding: var(--spacing-large);
-
   border-radius: 8px;
 }
-.heading__paragraph {
+
+.heading__paragraph--container {
   border-top: 1px solid #fff;
   padding-top: var(--spacing-small);
+  line-height: 1.5rem;
+}
+
+.heading__paragraph {
   font-size: 1.2rem;
   text-align: center;
 }
