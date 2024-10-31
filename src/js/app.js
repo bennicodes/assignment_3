@@ -83,15 +83,25 @@ const nextButton = document.querySelector("#next-button");
 
 let currentQuestionIndex = 0;
 let score = 0;
-let currentScore = 0;
 
 // Functions
 // Start Quiz
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
-  currentScore = 0;
   showQuestion();
+}
+
+// Reset Quiz Functions
+// Score reset
+function resetScore() {
+  score = 0;
+  scoreCounter.innerHTML = score;
+}
+
+// Next button reset
+function resetNextButton() {
+  nextButton.innerHTML = "Next";
 }
 
 // Question function
@@ -156,6 +166,7 @@ function nextButtonAction() {
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
     showQuestion();
+    nextButton.innerHTML = "Next";
   } else {
     showScore();
   }
@@ -165,6 +176,8 @@ nextButton.addEventListener("click", () => {
   if (currentQuestionIndex < questions.length) {
     nextButtonAction();
   } else {
+    resetNextButton();
+    resetScore();
     startQuiz();
   }
 });
