@@ -65,14 +65,15 @@ const questions = [
     question: "Who has scored the most own goals in premier league history?",
     answers: [
       { text: "Jamie Charragher", correct: false },
-      { text: "Martin Skrtel", correct: true },
-      { text: "Richard Dunne", correct: false },
+      { text: "Martin Skrtel", correct: false },
+      { text: "Richard Dunne", correct: true },
     ],
   },
 ];
 
 // Element selection
 const startQuizButton = document.querySelector("#take-quiz-button");
+const scoreCounter = document.querySelector(".score__number");
 const questionCounterElement = document.querySelector(
   ".current__question--count"
 );
@@ -82,15 +83,18 @@ const nextButton = document.querySelector("#next-button");
 
 let currentQuestionIndex = 0;
 let score = 0;
+let currentScore = 0;
 
 // Functions
+// Start Quiz
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
-  nextButton.innerHTML = "Next";
+  currentScore = 0;
   showQuestion();
 }
 
+// Question function
 function showQuestion() {
   resetState();
   let currentQuestion = questions[currentQuestionIndex];
@@ -103,13 +107,67 @@ function showQuestion() {
     button.innerHTML = answer.text;
     button.classList.add("answer__button");
     answerButtons.append(button);
+    if (answer.correct) {
+      button.dataset.correct = answer.correct;
+    }
+    button.addEventListener("click", selectAnswer);
   });
 }
 
+//Answer button functions
 function resetState() {
   while (answerButtons.firstChild) {
     answerButtons.removeChild(answerButtons.firstChild);
   }
 }
 
+function selectAnswer(e) {
+  const selectedButton = e.target;
+  const correct = selectedButton.dataset.correct === "true";
+  if (correct) {
+    selectedButton.style.backgroundColor = "#00c200";
+    score++;
+    scoreCounter.innerHTML = score;
+  } else {
+    selectedButton.style.backgroundColor = "#ff221a";
+  }
+  Array.from(answerButtons.children).forEach((button) => {
+    if (button.dataset.correct === "true") {
+      button.style.backgroundColor = "#00c200";
+    }
+    button.disabled = true;
+  });
+}
+
+// Score page function
+function showScore() {
+  resetState();
+  if (score !== questions.length) {
+    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
+    nextButton.innerHTML = "Try Again";
+  } else {
+    questionElement.innerHTML = `You're amazing! You scored ${score} out of ${questions.length}! `;
+    nextButton.innerHTML = "Play Again";
+  }
+}
+
+// Next button
+function nextButtonAction() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    showQuestion();
+  } else {
+    showScore();
+  }
+}
+
+nextButton.addEventListener("click", () => {
+  if (currentQuestionIndex < questions.length) {
+    nextButtonAction();
+  } else {
+    startQuiz();
+  }
+});
+
+//Initialize quiz
 startQuiz();
