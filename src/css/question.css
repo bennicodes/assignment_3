@@ -29,50 +29,71 @@ header {
 main {
   width: 100%;
   padding: var(--spacing-x-large);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.hero-section {
+/* .hero-section {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-}
+} */
 
 .hero__section--container {
   background-color: #fff;
   width: 50%;
-  height: 60%;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: var(--spacing-medium);
+  border: 1px solid #000;
+  border-radius: 8px;
+  font-family: sans-serif;
+}
+/* TODO */
+/* Fix content fitment and bottom part of quiz content */
+/* Quiz content */
+.top__quiz--container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-medium);
+  font-weight: 600;
+}
+
+.score__count--container {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   padding: var(--spacing-small);
   border: 1px solid #000;
   border-radius: 8px;
 }
 
-/* Quiz content */
-.question__count--container {
-  width: 100%;
-  padding: var(--spacing-medium) 0;
-}
-.question__count {
-  text-align: right;
-  font-family: sans-serif;
+.score__number {
+  padding: var(--spacing-small);
 }
 
-.question__heading {
+.question {
   padding: var(--spacing-medium) 0;
   font-size: var(--font-size-medium);
-  font-family: sans-serif;
   font-weight: 500;
+  text-align: center;
 }
 
 .answer__button--container {
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--spacing-medium);
   padding: var(--spacing-medium) 0;
 }
@@ -80,7 +101,7 @@ main {
 .answer__button {
   background-color: blueviolet;
   color: #fff;
-  width: 100%;
+  width: 75%;
   padding: var(--spacing-medium) 0;
   border: none;
   border-radius: 6px;
@@ -91,15 +112,22 @@ main {
   width: 100%;
   padding: var(--spacing-medium) 0;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timer {
+  font-size: var(--font-size-base);
 }
 
 .next__page--button {
   background-color: #00c200;
   color: #fff;
+  display: block;
   padding: var(--spacing-medium);
   border: none;
   border-radius: 6px;
+  font-size: var(--font-size-base);
 }
 
 /* Psuedo Classes */
