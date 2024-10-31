@@ -70,6 +70,43 @@ const questions = [
   },
 ];
 
+const startQuizButton = document.querySelector("#take-quiz-button");
+const questionCounterElement = document.querySelector(
+  ".current__question--count"
+);
 const questionElement = document.querySelector(".question");
 const answerButton = document.querySelector(".answer__button");
 const nextButton = document.querySelector("#next-button");
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+function startQuiz() {
+  currentQuestionIndex = 0;
+  score = 0;
+  nextButton.innerHTML = "Next";
+  showQuestion();
+}
+
+function showQuestion() {
+  resetState();
+  let currentQuestion = questions[currentQuestionIndex];
+  let questionNumber = currentQuestionIndex + 1;
+  questionElement.innerHTML = currentQuestion.question;
+  questionCounterElement.innerHTML = questionNumber;
+
+  currentQuestion.answers.forEach((answer) => {
+    const button = document.createElement("button");
+    button.innerHTML = answer.text;
+    button.classList.add("answer__button");
+    answerButton.append(button);
+  });
+}
+
+function resetState() {
+  while (answerButton.firstChild) {
+    answerButton.removeChild(answerButton.firstChild);
+  }
+}
+
+startQuiz();
