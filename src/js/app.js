@@ -1,3 +1,4 @@
+// Question + answers for Quiz
 const questions = [
   {
     question: "Who was the first manager to win the premier league?",
@@ -70,17 +71,19 @@ const questions = [
   },
 ];
 
+// Element selection
 const startQuizButton = document.querySelector("#take-quiz-button");
 const questionCounterElement = document.querySelector(
   ".current__question--count"
 );
 const questionElement = document.querySelector(".question");
-const answerButton = document.querySelector(".answer__button");
+const answerButtons = document.querySelector(".answer__button--container");
 const nextButton = document.querySelector("#next-button");
 
 let currentQuestionIndex = 0;
 let score = 0;
 
+// Functions
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
@@ -99,13 +102,13 @@ function showQuestion() {
     const button = document.createElement("button");
     button.innerHTML = answer.text;
     button.classList.add("answer__button");
-    answerButton.append(button);
+    answerButtons.append(button);
   });
 }
 
 function resetState() {
-  while (answerButton.firstChild) {
-    answerButton.removeChild(answerButton.firstChild);
+  while (answerButtons.firstChild) {
+    answerButtons.removeChild(answerButtons.firstChild);
   }
 }
 
