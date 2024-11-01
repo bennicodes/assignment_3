@@ -43,8 +43,9 @@ main {
   justify-content: center;
   align-items: center;
   padding: var(--spacing-medium);
-  border: 1px solid #000;
+  border: 2px solid #000;
   border-radius: 8px;
+  box-shadow: 4px grey;
   font-family: sans-serif;
 }
 

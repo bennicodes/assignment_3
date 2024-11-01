@@ -80,6 +80,10 @@ const questionCounterElement = document.querySelector(
 const questionElement = document.querySelector(".question");
 const answerButtons = document.querySelector(".answer__button--container");
 const nextButton = document.querySelector("#next-button");
+const countdownElement = document.querySelector(".time");
+
+const startingTime = 15;
+let time = startingTime;
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -89,7 +93,30 @@ let score = 0;
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
+  timeLeft = 15;
   showQuestion();
+  countdown();
+}
+
+// Countdown function
+function countdown() {
+  countdownElement.innerHTML = time;
+  if (time > 0) {
+    time--;
+  }
+}
+setInterval(countdown, 1000);
+
+// Countdown reset function
+function resetCountdown() {
+  time = startingTime;
+}
+
+//Disable quiz function
+function disableQuiz() {
+  if (time === 0) {
+    answerButtons.disabled = true;
+  }
 }
 
 // Reset Quiz Functions
@@ -98,6 +125,9 @@ function resetScore() {
   score = 0;
   scoreCounter.innerHTML = score;
 }
+
+// TODO:
+//Timer function
 
 // Next button reset
 function resetNextButton() {
@@ -167,6 +197,7 @@ function nextButtonAction() {
   if (currentQuestionIndex < questions.length) {
     showQuestion();
     nextButton.innerHTML = "Next";
+    resetCountdown();
   } else {
     showScore();
   }
