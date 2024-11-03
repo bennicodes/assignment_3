@@ -1,5 +1,6 @@
 body {
   width: 100%;
+  min-width: 320px;
   min-height: 100vh;
   padding: var(--spacing-medium);
   font-family: sans-serif;
@@ -14,7 +15,7 @@ header {
 .main__heading--container {
   background-color: blueviolet;
   color: white;
-  width: 50%;
+  width: 500px;
   height: 200px;
   display: flex;
   flex-direction: column;
@@ -53,7 +54,6 @@ main {
 }
 
 .main__paragraph {
-  padding-bottom: var(--spacing-medium);
   font-size: var(--font-size-medium);
 }
 
@@ -67,8 +67,35 @@ main {
   font-size: var(--font-size-base);
 }
 
+/* Psuedo Class */
 .quiz__button--link:hover {
   background-color: #481875;
   transform: scale(1.05);
   transition: all 0.3s ease;
+}
+
+/* Media Queries */
+/* Tablet */
+@media screen and (max-width: 520px) {
+  main {
+    padding: var(--spacing-medium);
+  }
+  .main__heading--container {
+    width: 100%;
+    height: auto;
+  }
+  .heading__paragraph {
+    line-height: 2rem;
+  }
+}
+
+/* Phone */
+@media screen and(max-width: 400px) {
+  .main__heading--container {
+    padding: var(--spacing-large);
+  }
+  .main__container {
+    justify-content: center;
+    align-items: center;
+  }
 }
