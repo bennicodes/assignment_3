@@ -25,11 +25,16 @@
             <p class="score__number">0</p>
           </div>
           <div class="question__count--container">
-            <h4 class="question__count">
-              Question
-              <h4 class="current__question--count">1</h4>
-              of 8
-            </h4>
+            <div class="question__count--text-container">
+              <h4 class="question__count">
+                Question
+                <h4 class="current__question--count">1</h4>
+                of 8
+              </h4>
+            </div>
+            <div class="progress__bar--container">
+              <div class="progress__bar"></div>
+            </div>
           </div>
         </div>
         <h3 class="question">Question Text</h3>
@@ -39,7 +44,10 @@
           <button class="answer__button">Answer 3</button>
         </div>
         <div class="bottom__container">
-          <button class="next__page--button" id="next-button">Next</button>
+          <a class="bottom__button hidden-button" id="home" href="../index.html"
+            >Go Home</a
+          >
+          <button class="bottom__button" id="next-button">Next</button>
         </div>
       </section>
     </main>

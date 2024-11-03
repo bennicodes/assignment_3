@@ -7,3 +7,10 @@ footer {
   text-align: center;
   font-size: 0.8rem;
 }
+/* Media queries */
+/* Tablet */
+@media screen and (max-width: 768px) {
+  footer {
+    padding: var(--spacing-small);
+  }
+}

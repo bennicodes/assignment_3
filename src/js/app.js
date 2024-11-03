@@ -77,13 +77,11 @@ const scoreCounter = document.querySelector(".score__number");
 const questionCounterElement = document.querySelector(
   ".current__question--count"
 );
+const progressBarElement = document.querySelector(".progress__bar");
 const questionElement = document.querySelector(".question");
 const answerButtons = document.querySelector(".answer__button--container");
 const nextButton = document.querySelector("#next-button");
-const countdownElement = document.querySelector(".time");
-
-const startingTime = 5;
-let time = startingTime;
+const hiddenButton = document.querySelector(".hidden-button");
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -94,10 +92,9 @@ function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
   showQuestion();
-  countdown();
 }
 
-// Reset Quiz Functions
+// Reset Functions
 // Score reset
 function resetScore() {
   score = 0;
@@ -108,14 +105,24 @@ function resetScore() {
 function resetNextButton() {
   nextButton.innerHTML = "Next";
 }
-
-// Question function
+// Score Page Button Reset
+function resetScoreButtons() {
+  nextButton.classList.remove("score__page--button");
+  hiddenButton.style.display = "none";
+}
+// Quiz functions
 function showQuestion() {
   resetState();
   let currentQuestion = questions[currentQuestionIndex];
   let questionNumber = currentQuestionIndex + 1;
   questionElement.innerHTML = currentQuestion.question;
   questionCounterElement.innerHTML = questionNumber;
+
+  // Update Progress bar
+  let maxQuestionProgress = questions.length;
+  progressBarElement.style.width = `${
+    (questionNumber / maxQuestionProgress) * 100
+  }%`;
 
   currentQuestion.answers.forEach((answer) => {
     const button = document.createElement("button");
@@ -136,6 +143,7 @@ function resetState() {
   }
 }
 
+// Check Answer function
 function selectAnswer(e) {
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct === "true";
@@ -154,19 +162,7 @@ function selectAnswer(e) {
   });
 }
 
-// Score page function
-function showScore() {
-  resetState();
-  if (score !== questions.length) {
-    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
-    nextButton.innerHTML = "Try Again";
-  } else {
-    questionElement.innerHTML = `You're amazing! You scored ${score} out of ${questions.length}! `;
-    nextButton.innerHTML = "Play Again";
-  }
-}
-
-// Next button
+// Next button Function
 function nextButtonAction() {
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
@@ -177,12 +173,28 @@ function nextButtonAction() {
   }
 }
 
+// Score page function
+function showScore() {
+  resetState();
+  if (score !== questions.length) {
+    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
+    nextButton.innerHTML = "Try Again";
+  } else {
+    questionElement.innerHTML = `You're amazing! You scored ${score} out of ${questions.length}! `;
+    nextButton.innerHTML = "Play Again";
+  }
+  hiddenButton.style.display = "block";
+  hiddenButton.classList.add("score__page--button");
+  nextButton.classList.add("score__page--button");
+}
+
 nextButton.addEventListener("click", () => {
   if (currentQuestionIndex < questions.length) {
     nextButtonAction();
   } else {
     resetNextButton();
     resetScore();
+    resetScoreButtons();
     startQuiz();
   }
 });
