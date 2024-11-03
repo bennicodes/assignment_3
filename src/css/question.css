@@ -113,12 +113,8 @@ main {
   height: 100%;
   display: flex;
   padding: var(--spacing-medium);
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-}
-
-.timer {
-  font-size: var(--font-size-base);
 }
 
 .next__page--button {
@@ -146,7 +142,7 @@ main {
   transform: scale(1);
 }
 .answer__button:disabled {
-  background-color: #cccccc;
+  background-color: #b2b2b2;
   cursor: not-allowed;
   transform: none;
 }
