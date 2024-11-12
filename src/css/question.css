@@ -136,6 +136,14 @@ main {
   font-size: var(--font-size-base);
 }
 
+.correct {
+  background-color: #00c200;
+}
+
+.incorrect {
+  background-color: #ff221a;
+}
+
 .bottom__container {
   width: 100%;
   height: 100%;
@@ -162,6 +170,13 @@ main {
 
 .hidden-button {
   display: none;
+}
+
+/* Popup Window */
+.popup__container {
+  width: 500px;
+  height: 600px;
+  border: 1px solid black;
 }
 
 /* Psuedo Classes */

@@ -99,12 +99,12 @@ function startQuiz() {
 // Score reset
 function resetScore() {
   score = 0;
-  scoreCounter.innerHTML = score;
+  scoreCounter.textContent = score;
 }
 
 // Next button reset
 function resetNextButton() {
-  nextButton.innerHTML = "Next";
+  nextButton.textContent = "Next";
 }
 // Score Page Button Reset
 function resetScoreButtons() {
@@ -119,8 +119,8 @@ function showQuestion() {
   resetState();
   let currentQuestion = questions[currentQuestionIndex];
   let questionNumber = currentQuestionIndex + 1;
-  questionElement.innerHTML = currentQuestion.question;
-  questionCounterElement.innerHTML = questionNumber;
+  questionElement.textContent = currentQuestion.question;
+  questionCounterElement.textContent = questionNumber;
 
   // Update Progress bar
   let maxQuestionProgress = questions.length;
@@ -130,7 +130,7 @@ function showQuestion() {
 
   currentQuestion.answers.forEach((answer) => {
     const button = document.createElement("button");
-    button.innerHTML = answer.text;
+    button.textContent = answer.text;
     button.classList.add("answer__button");
     answerButtons.append(button);
     if (answer.correct) {
@@ -146,23 +146,24 @@ function resetState() {
     answerButtons.removeChild(answerButtons.firstChild);
   }
 }
-
+// TODO: fix selected answer button incorrect
 // Check Answer function
 function selectAnswer(e) {
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct === "true";
   if (correct) {
-    selectedButton.style.backgroundColor = "#00c200";
+    selectedButton.classList.add("correct");
     score++;
-    scoreCounter.innerHTML = score;
+    scoreCounter.textContent = score;
   } else {
     selectedButton.style.backgroundColor = "#ff221a";
   }
   Array.from(answerButtons.children).forEach((button) => {
     if (button.dataset.correct === "true") {
       button.style.backgroundColor = "#00c200";
+    } else {
+      button.disabled = true;
     }
-    button.disabled = true;
   });
 }
 
@@ -171,7 +172,7 @@ function nextButtonAction() {
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
     showQuestion();
-    nextButton.innerHTML = "Next";
+    nextButton.textContent = "Next";
   } else {
     showScore();
   }
@@ -181,11 +182,11 @@ function nextButtonAction() {
 function showScore() {
   resetState();
   if (score !== questions.length) {
-    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
-    nextButton.innerHTML = "Try Again";
+    questionElement.textContent = `You scored ${score} out of ${questions.length}!`;
+    nextButton.textContent = "Try Again";
   } else {
-    questionElement.innerHTML = `You're amazing! You scored ${score} out of ${questions.length}! `;
-    nextButton.innerHTML = "Play Again";
+    questionElement.textContent = `You're amazing! You scored ${score} out of ${questions.length}! `;
+    nextButton.textContent = "Play Again";
   }
   summaryButton.classList.remove("hidden-button");
   summaryButton.classList.add("score__page--button");
@@ -195,6 +196,8 @@ function showScore() {
 
   nextButton.classList.add("score__page--button");
 }
+
+// TODO: Create popup for summary page
 
 // function openPopup() {
 //   window.open("summary.html", "Quiz Summary", "width=500");
