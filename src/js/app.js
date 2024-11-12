@@ -81,7 +81,8 @@ const progressBarElement = document.querySelector(".progress__bar");
 const questionElement = document.querySelector(".question");
 const answerButtons = document.querySelector(".answer__button--container");
 const nextButton = document.querySelector("#next-button");
-const hiddenButton = document.querySelector(".hidden-button");
+const homeButton = document.querySelector("#home-button");
+const summaryButton = document.querySelector("#summary-button");
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -108,7 +109,10 @@ function resetNextButton() {
 // Score Page Button Reset
 function resetScoreButtons() {
   nextButton.classList.remove("score__page--button");
-  hiddenButton.style.display = "none";
+  summaryButton.classList.remove("score__page--button");
+  summaryButton.classList.add("hidden-button");
+  homeButton.classList.remove("score__page--button");
+  homeButton.classList.add("hidden-button");
 }
 // Quiz functions
 function showQuestion() {
@@ -183,9 +187,17 @@ function showScore() {
     questionElement.innerHTML = `You're amazing! You scored ${score} out of ${questions.length}! `;
     nextButton.innerHTML = "Play Again";
   }
-  hiddenButton.style.display = "block";
-  hiddenButton.classList.add("score__page--button");
+  summaryButton.classList.remove("hidden-button");
+  summaryButton.classList.add("score__page--button");
+
+  homeButton.classList.remove("hidden-button");
+  homeButton.classList.add("score__page--button");
+
   nextButton.classList.add("score__page--button");
+}
+
+function openPopup() {
+  window.open("summary.html", "Quiz Summary", "width=500");
 }
 
 nextButton.addEventListener("click", () => {

@@ -229,7 +229,7 @@ main {
 }
 
 /* Mobile */
-@media (max-width: 480px) {
+@media (max-width: 535px) {
   .hero__section--container {
     width: 100%;
   }
@@ -242,5 +242,16 @@ main {
   }
   .question {
     padding: var(--spacing-small);
+    font-size: var(--font-size-base);
+  }
+
+  .bottom__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bottom__button {
+    text-align: center;
+    width: 80%;
   }
 }
