@@ -196,9 +196,9 @@ function showScore() {
   nextButton.classList.add("score__page--button");
 }
 
-function openPopup() {
-  window.open("summary.html", "Quiz Summary", "width=500");
-}
+// function openPopup() {
+//   window.open("summary.html", "Quiz Summary", "width=500");
+// }
 
 nextButton.addEventListener("click", () => {
   if (currentQuestionIndex < questions.length) {
