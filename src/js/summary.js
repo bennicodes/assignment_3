@@ -56,7 +56,7 @@ const questions = [
       "Which Norwegian player has played more than 1 game in the premier league?",
     answers: [
       { text: "Jo Inge Berget", correct: false },
-      { text: "Kristoffer Haestad (Hæstad)", correct: true },
+      { text: "Kristoffer Haestad", correct: true },
       { text: "Erik Hagen", correct: false },
     ],
   },
@@ -70,6 +70,7 @@ const questions = [
   },
 ];
 
+//Quiz summary content
 function generateSummaryContent() {
   return questions
     .map(

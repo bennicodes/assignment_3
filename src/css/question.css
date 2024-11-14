@@ -7,15 +7,29 @@ body {
   min-height: 100vh;
 }
 
+/* HEADER */
 header {
   background-color: blueviolet;
   width: 100%;
   padding: 1rem;
+  position: relative;
 }
+
 .header__container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.header__icon--link {
+  position: fixed;
+  left: 10px;
+  padding: var(--spacing-medium);
+}
+
+.header__heading {
+  text-align: center;
+  margin-left: 16px;
 }
 
 .header__link {
@@ -24,6 +38,7 @@ header {
   font-size: 1.5rem;
   font-family: "Anton", sans-serif;
   letter-spacing: 2px;
+  text-align: center;
 }
 
 /* Main */
@@ -170,9 +185,13 @@ main {
 }
 
 /* Psuedo Classes */
+
+.header__icon--link:hover {
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}
 .header__link:hover {
   color: #481875;
-  text-decoration: underline;
   transition: all 0.2s ease;
 }
 
@@ -250,6 +269,11 @@ main {
 
 /* Mobile */
 @media (max-width: 535px) {
+  .header__link {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
   .hero__section--container {
     width: 100%;
   }
