@@ -146,7 +146,7 @@ function resetState() {
     answerButtons.removeChild(answerButtons.firstChild);
   }
 }
-// TODO: fix selected answer button incorrect
+
 // Check Answer function
 function selectAnswer(e) {
   const selectedButton = e.target;
@@ -164,7 +164,6 @@ function selectAnswer(e) {
       button.classList.add("correct");
     } else {
       button.disabled = true;
-      button.classList.add("wrong");
     }
   });
 }
@@ -199,8 +198,7 @@ function showScore() {
   nextButton.classList.add("score__page--button");
 }
 
-// TODO: Create popup for summary page
-
+// Next button event listener
 nextButton.addEventListener("click", () => {
   if (currentQuestionIndex < questions.length) {
     nextButtonAction();
@@ -212,5 +210,6 @@ nextButton.addEventListener("click", () => {
   }
 });
 
+// Summary button event listener
 //Initialize quiz
 startQuiz();
