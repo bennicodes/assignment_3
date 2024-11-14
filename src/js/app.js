@@ -198,6 +198,35 @@ function showScore() {
   nextButton.classList.add("score__page--button");
 }
 
+// TODO: Create summary popup window
+// Quiz summary
+// function generateSummaryContent() {
+//   return questions
+//     .map(
+//       (q, index) => `
+//       <h3>Q${index + 1}: ${q.question}</h3>
+//       ${q.answers
+//         .map(
+//           (answer) => `
+//         <p class="${answer.correct ? "correct-answer" : "incorrect-answer"}">
+//           ${answer.text} ${answer.correct ? "(Correct)" : ""}
+//         </p>
+//       `
+//         )
+//         .join("")}
+//     `
+//     )
+//     .join("");
+// }
+
+// Quiz summary popup
+function openPopup() {
+  window.open("summary.html", "Quiz Summary", "width=500, height=600");
+}
+
+// Summary button event listener
+summaryButton.addEventListener("click", openPopup);
+
 // Next button event listener
 nextButton.addEventListener("click", () => {
   if (currentQuestionIndex < questions.length) {
