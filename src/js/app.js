@@ -151,18 +151,20 @@ function resetState() {
 function selectAnswer(e) {
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct === "true";
+  // If the answer is correct, apply green to the button
   if (correct) {
-    selectedButton.classList.add("correct");
+    selectedButton.classList.add(correct ? "correct" : "incorrect");
     score++;
     scoreCounter.textContent = score;
   } else {
-    selectedButton.style.backgroundColor = "#ff221a";
+    selectedButton.classList.add("incorrect");
   }
   Array.from(answerButtons.children).forEach((button) => {
     if (button.dataset.correct === "true") {
-      button.style.backgroundColor = "#00c200";
+      button.classList.add("correct");
     } else {
       button.disabled = true;
+      button.classList.add("wrong");
     }
   });
 }
@@ -198,10 +200,6 @@ function showScore() {
 }
 
 // TODO: Create popup for summary page
-
-// function openPopup() {
-//   window.open("summary.html", "Quiz Summary", "width=500");
-// }
 
 nextButton.addEventListener("click", () => {
   if (currentQuestionIndex < questions.length) {

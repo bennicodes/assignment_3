@@ -136,14 +136,6 @@ main {
   font-size: var(--font-size-base);
 }
 
-.correct {
-  background-color: #00c200;
-}
-
-.incorrect {
-  background-color: #ff221a;
-}
-
 .bottom__container {
   width: 100%;
   height: 100%;
@@ -173,10 +165,8 @@ main {
 }
 
 /* Popup Window */
-.popup__container {
-  width: 500px;
-  height: 600px;
-  border: 1px solid black;
+.popup__window {
+  font-family: sans-serif;
 }
 
 /* Psuedo Classes */
@@ -191,9 +181,16 @@ main {
   transform: scale(1.05);
   transition: all 0.3s ease;
 }
+
+.correct:hover {
+  background-color: #00c200;
+  transform: none;
+}
+
 .answer__button:active {
   transform: scale(1);
 }
+
 .answer__button:disabled {
   background-color: #b2b2b2;
   cursor: not-allowed;
@@ -216,6 +213,14 @@ main {
 }
 .score__page--button:active {
   transform: scale(1);
+}
+
+.answer__button.correct {
+  background-color: #00c200;
+}
+
+.answer__button.incorrect {
+  background-color: #ff221a;
 }
 
 /* Media Queries */
