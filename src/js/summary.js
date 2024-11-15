@@ -75,20 +75,21 @@ function generateSummaryContent() {
   return questions
     .map(
       (q, index) => `
-        <h3>Question ${index + 1}: ${q.question}</h3>
-        ${q.answers
-          .map(
-            (answer) => `
-          <p class="${answer.correct ? "correct-answer" : "incorrect-answer"}">
-            ${answer.text} ${answer.correct ? "(Correct)" : ""}
-          </p>
-        `
-          )
-          .join("")}
+      <h3>Q${index + 1}: ${q.question}</h3>
+      ${q.answers
+        .map(
+          (answer) => `
+        <p class="${answer.correct ? "correct-answer" : "incorrect-answer"}">
+          ${answer.text} ${answer.correct ? "(Correct)" : ""}
+        </p>
       `
+        )
+        .join("")}
+    `
     )
     .join("");
 }
 
+//Input summary content
 document.querySelector(".main__summary--container").innerHTML =
   generateSummaryContent();
