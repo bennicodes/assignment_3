@@ -71,25 +71,30 @@ const questions = [
 ];
 
 //Quiz summary content
-function generateSummaryContent() {
-  return questions
-    .map(
-      (q, index) => `
-      <h3>Q${index + 1}: ${q.question}</h3>
-      ${q.answers
-        .map(
-          (answer) => `
-        <p class="${answer.correct ? "correct-answer" : "incorrect-answer"}">
-          ${answer.text} ${answer.correct ? "(Correct)" : ""}
-        </p>
-      `
-        )
-        .join("")}
-    `
-    )
-    .join("");
+function createSummaryContent() {
+  const summaryContainer = document.querySelector(".main__summary--container");
+
+  // Clear existing content
+  summaryContainer.textContent = "";
+
+  // Create summary questions
+  questions.forEach((q, index) => {
+    const questionHeading = document.createElement("h3");
+    questionHeading.textContent = `Question ${index + 1}: ${q.question}`;
+    summaryContainer.append(questionHeading);
+
+    // Create summary answers
+    q.answers.forEach((answer) => {
+      const answerElement = document.createElement("p");
+      answerElement.textContent = `Question ${answer.text} ${
+        answer.correct ? "(correct" : ""
+      }`;
+      answerElement.classList.add(
+        answer.correct ? "correct-answer" : "incorrect-answer"
+      );
+      summaryContainer.append(answerElement);
+    });
+  });
 }
 
-//Input summary content
-document.querySelector(".main__summary--container").innerHTML =
-  generateSummaryContent();
+createSummaryContent();
