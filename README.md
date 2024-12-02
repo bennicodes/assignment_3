@@ -1,5 +1,15 @@
-#Premier League Quiz
+# Premier League Quiz
 
+## Description
+
+This is a quiz that tests the users knowledge of history in Premier League.
+The quiz tracks the users answers and is able to see a summary at the end of the quiz.
+The user will also get feedback based on their answers in order to let them know if their answers are correct.
+
+## Usage instructions
+
+Press the button you wish to answer.
+Follow the label on the buttons in order to navigate.
 
 ## Sources
 
