@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/variables.css" />
-    <link rel="stylesheet" href="../css/footer.css" />
     <link rel="stylesheet" href="../css/question.css" />
     <title>Premier League Quiz</title>
   </head>
@@ -43,10 +42,7 @@
       </div>
     </header>
     <main>
-      <section class="hero__section--container">
-        <div class="popup-container">
-          <h3 class="summary__heading"></h3>
-        </div>
+      <div class="quiz__container">
         <div class="top__quiz--container">
           <div class="score__count--container">
             <h4 class="score__heading">Current score</h4>
@@ -83,11 +79,14 @@
           >
           <button class="bottom__button" id="next-button">Next</button>
         </div>
-      </section>
+      </div>
+      <div class="summary__container">
+        <div class="summary__window">
+          <!-- Content goes here -->
+        </div>
+      </div>
     </main>
-    <footer>
-      <p class="footer__paragraph">&copy All rights reserved Benedict 2024.</p>
-    </footer>
+
     <script src="../js/app.js"></script>
   </body>
 </html>

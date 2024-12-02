@@ -57,7 +57,7 @@ const questions = [
       "Which Norwegian player has played more than 1 game in the premier league?",
     answers: [
       { text: "Jo Inge Berget", correct: false },
-      { text: "Kristoffer Haestad (Hæstad)", correct: true },
+      { text: "Kristoffer Haestad", correct: true },
       { text: "Erik Hagen", correct: false },
     ],
   },
@@ -72,6 +72,7 @@ const questions = [
 ];
 
 // Element selection
+const body = document.querySelector("body");
 const startQuizButton = document.querySelector("#take-quiz-button");
 const scoreCounter = document.querySelector(".score__number");
 const questionCounterElement = document.querySelector(
@@ -199,14 +200,7 @@ function showScore() {
 }
 
 // Quiz summary popup
-function openPopupWindow() {
-  window.open("summary.html", "Quiz Summary", "width=500, height=600");
-}
-
-// Summary button event listener
-summaryButton.addEventListener("click", () => {
-  openPopupWindow();
-});
+function createSummary() {}
 
 // Next button event listener
 nextButton.addEventListener("click", () => {
@@ -220,6 +214,82 @@ nextButton.addEventListener("click", () => {
   }
 });
 
-// Summary button event listener
 //Initialize quiz
 startQuiz();
+
+let userAnswers = []; // To store the user's answers
+
+// Function to track the user's answer
+function selectAnswer(e) {
+  const selectedButton = e.target;
+  const correct = selectedButton.dataset.correct === "true";
+
+  // Save the user's selected answer
+  const userAnswerText = selectedButton.textContent;
+  userAnswers[currentQuestionIndex] = userAnswerText;
+
+  if (correct) {
+    selectedButton.classList.add("correct");
+    score++;
+    scoreCounter.textContent = score;
+  } else {
+    selectedButton.classList.add("incorrect");
+  }
+
+  // Show correct answers and disable buttons
+  Array.from(answerButtons.children).forEach((button) => {
+    if (button.dataset.correct === "true") {
+      button.classList.add("correct");
+    }
+    button.disabled = true;
+  });
+}
+
+// Create and display the summary content
+function createSummaryContent() {
+  const summaryWindow = document.querySelector(".summary__window");
+  summaryWindow.textContent = ""; // Clear previous content
+
+  questions.forEach((question, index) => {
+    const questionHeading = document.createElement("h3");
+    questionHeading.textContent = `Question ${index + 1}: ${question.question}`;
+    questionHeading.classList.add("summary__heading");
+    summaryWindow.append(questionHeading);
+
+    // Show user's selected answer
+    const userAnswerElement = document.createElement("p");
+    userAnswerElement.textContent = `Your answer: ${
+      userAnswers[index] || "No answer selected"
+    }`;
+
+    userAnswerElement.classList.add("user__answer");
+    summaryWindow.append(userAnswerElement);
+    question.answers.forEach((answer) => {
+      const answerElement = document.createElement("p");
+      answerElement.textContent = `${answer.text} ${
+        answer.correct ? "(Correct)" : ""
+      }`;
+      answerElement.classList.add(
+        answer.correct ? "correct-answer" : "incorrect-answer"
+      );
+      summaryWindow.append(answerElement);
+
+      const buttonContainer = document.createElement("div");
+      buttonContainer.classList.add("answer__button--container");
+      summaryWindow.append(buttonContainer);
+      buttonContainer.append(homeButton);
+    });
+  });
+
+  // Display the summary container
+  document
+    .querySelector(".summary__container")
+    .classList.add("summary--active");
+}
+
+const quizContainer = document.querySelector(".quiz__container");
+summaryButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  createSummaryContent();
+  quizContainer.classList.add("quiz__container--hidden");
+});

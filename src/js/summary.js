@@ -86,8 +86,8 @@ function createSummaryContent() {
     // Create summary answers
     q.answers.forEach((answer) => {
       const answerElement = document.createElement("p");
-      answerElement.textContent = `Question ${answer.text} ${
-        answer.correct ? "(correct" : ""
+      answerElement.textContent = `${answer.text} ${
+        answer.correct ? "(correct)" : ""
       }`;
       answerElement.classList.add(
         answer.correct ? "correct-answer" : "incorrect-answer"
