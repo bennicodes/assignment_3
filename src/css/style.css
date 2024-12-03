@@ -25,6 +25,10 @@ header {
   border-radius: 8px;
 }
 
+.main__heading--container p{
+  text-align: start;
+}
+
 .heading__paragraph--container {
   border-top: 1px solid #fff;
   padding-top: var(--spacing-small);
