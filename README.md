@@ -1,6 +1,6 @@
 # Premier League Quiz
 
-A simple menu which displays a list of web components which are in different states and shows how they work.
+A simple quiz that asks the user 8 different questions about the Premier League and some current and previous premier league players.
 
 ## Table of Contents
 
@@ -21,6 +21,7 @@ When done with the summary press the "Home" button which will take you back to t
 Color coded feedback
 Score tracker
 Question count and progress bar
+Summary page
 
 ## Sources
 
