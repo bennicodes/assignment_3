@@ -7,6 +7,8 @@ A simple quiz that asks the user 8 different questions about the Premier League 
 [Usage](#usage)
 [Features](#features)
 [Sources](#sources)
+[License](#license)
+[Contact](#contact)
 
 ## Usage
 
