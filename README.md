@@ -33,3 +33,11 @@ I used this video as inspiration for some styling, transitions when creating the
 I did my own styling and tweaked some of the javascript code in order to save a couple of lines in the code and enhance performance.
 
 I also used some chat GPT as I had trouble with getting the user answers to display in the summary
+
+## License
+
+This project is licensed under the MIT license - see the LICENSE file for details.
+
+## Contact
+
+If you have any questions or suggestions, feel free to contact me at [benedict.notoane@hotmail.com].
