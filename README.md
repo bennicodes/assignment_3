@@ -6,7 +6,7 @@ A simple quiz that asks the user 8 different questions about the Premier League 
 
 [Usage](#usage)
 [Features](#features)
-[Sources](#sources)
+[Resources](#resources)
 [License](#license)
 [Contact](#contact)
 
@@ -25,7 +25,10 @@ Score tracker
 Question count and progress bar
 Summary page
 
-## Sources
+## Resources
+
+Netlify link:
+https://premierleaguequiz.netlify.app
 
 I used this video for inspiration and help with the javaScript:
 https://www.youtube.com/watch?v=PBcqGxrr9g8&ab_channel=GreatStack
